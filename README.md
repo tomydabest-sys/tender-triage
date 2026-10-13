@@ -1,185 +1,189 @@
 # Tender triage
 
-Reads a UK public sector tender document, extracts every individual requirement,
-and tells the bid team which ones are already answerable from material they have
-written before — and, more usefully, which ones are not.
+**Give it a tender and your old answers. It tells you which questions you can
+already answer, and which ones you have nothing for.**
 
-Some terms, for anyone outside bidding. An **ITT** (Invitation to Tender) is the
-document a public body issues when it wants to buy something: a set of questions
-and requirements that each supplier answers in writing. Some are **Pass/Fail**
-(fail one and the bid is rejected); the rest are **weighted** (scored, each worth
-a stated percentage of the total). An **answer library** is a bid team's bank of
-answers that were written and approved for previous bids.
+![How it works: you give it a tender and your past answers. It checks the document, pulls out every question and looks for a past answer to each. Every question comes back as reuse, partial or gap.](images/how-it-works.svg)
 
-## Why
+## The problem
 
-An IT reseller bidding a four-year local authority framework answers 30 to 80
-scored questions per submission. Most of that content exists somewhere in a
-previous bid. The expensive part is not the writing, it is working out which
-previous answer applies, who owns the ones that don't exist yet, and discovering
-on the final weekend that nobody has written the social value response that
-carries 10% of the score.
+Bidding for public sector work means answering a lot of questions. An IT
+reseller bidding for a four-year council framework answers 30 to 80 scored
+questions per submission.
 
-Running this on the sample ITT in this repo (synthetic: a county council buying
-end user devices and support, £6.4m over 4 years, 35 requirements) against the
-sample answer library of 18 answers:
+Most of those answers already exist somewhere in an old bid. Writing isn't the
+slow part. The slow part is:
 
-```
-$ python3 tender_triage.py sample_itt.md answer_library.json
-35 requirements extracted (35 by numbered)
-  REUSE    20  (57.1%)
-  PARTIAL  10
-  GAP       5
-Scored weighting with no source material: 21.0%
-Pass/Fail gaps: 1.5
+- working out which old answer fits which new question
+- spotting the questions nobody has ever answered
+- finding out on the final weekend that the question worth 10% of the score is
+  still blank
 
-Written: triage_output.json, triage_report.md
-```
+This tool does that sorting for you.
 
-Each requirement gets one of three verdicts: **REUSE** (an approved answer
-exists — lift and edit), **PARTIAL** (there is a starting point, and a person
-should look) or **GAP** (nothing to start from).
+## What you get
 
-Twenty questions have an approved answer ready. Five have nothing, carrying 21
-points of scored weighting, and one of them is Pass/Fail — a requirement that
-disqualifies the bid outright if it goes in blank. (The `1.5` on the last line is
-that requirement's reference number, not a count.) That is the output: a work
-queue, split by owning team, with the commercially dangerous items at the top.
+Every question in the tender comes back with one of three labels:
 
-The weighting figure is a plain sum of the percentages stated in the document.
-The sample ITT's weightings add up to 123% rather than 100%, so its 21% is 21
-points out of 123.
+| Label | What it means | What to do |
+|---|---|---|
+| 🟢 **REUSE** | You've answered this before | Lift the old answer and edit it |
+| 🟡 **PARTIAL** | You have something close | Get a person to look |
+| 🔴 **GAP** | Nothing to start from | Someone has to write it |
 
-[`triage_report.md`](triage_report.md) is the full report from that run.
-`triage_report.html` is the same report as a single page; GitHub shows HTML files
-as source, so download it and open it in a browser.
+Anything that isn't a REUSE goes into a to-do list for the team that owns it.
+Questions that would get the bid thrown out if left blank go at the very top.
 
-## Running it
+<p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/report-dark.png">
+  <img src="images/report-light.png" alt="The report for the sample tender. 20 questions answerable from existing material, 10 partial, 5 with nothing to start from, and 1 pass/fail question with no source. Below that, a to-do list grouped by team.">
+</picture>
+</p>
+
+That's the report for the sample tender in this repo. It's made up, but built
+like a real one: a council buying laptops, tablets and IT support. Out of 35
+questions:
+
+- **20** already have an answer
+- **10** have something close
+- **5** have nothing, and one of those is pass/fail, so a blank answer sinks the
+  whole bid
+
+The full version is in [triage_report.md](triage_report.md).
+
+## Try it
+
+You need Python 3. There is nothing else to install for the sample.
 
 ```bash
 git clone https://github.com/tomydabest-sys/tender-triage.git
 cd tender-triage
-pip install -r requirements.txt   # pdfplumber, python-docx: only needed for PDF and Word input
+python3 tender_triage.py sample_itt.md answer_library.json
+python3 report_html.py triage_output.json
 ```
 
-Needs Python 3 (checked on 3.14). The sample run uses only the standard library.
-On Windows, use `python` if `python3` is not found.
+Then open `triage_report.html` in your browser. On Windows, type `python`
+instead of `python3` if that doesn't work.
+
+## Use it on your own tender
 
 ```bash
-python3 tender_triage.py sample_itt.md answer_library.json   # -> triage_report.md, triage_output.json
-python3 report_html.py triage_output.json                    # -> triage_report.html
-python3 evaluate.py triage_output.json gold_labels.json      # matching accuracy against the manual labels
+pip install -r requirements.txt     # only needed for PDF and Word files
+python3 tender_triage.py your_tender.pdf your_answers.json
 ```
 
-To triage a real tender, pass it in place of `sample_itt.md`, and your own answer
-library in place of `answer_library.json` (same shape: a list of `answers`, each
-with an `id`, `title`, `text` and `tags`). Output files are written to the
-current directory and overwrite the previous run.
+- **Tender:** `.pdf`, `.docx`, `.md` or `.txt`.
+- **Answers:** a JSON file shaped like [answer_library.json](answer_library.json).
+  That's a list of answers, each with an `id`, `title`, `text` and `tags`.
+- **Results** land in the folder you run it from and replace the last run's.
+- **Teams:** questions are sent to teams by keyword. The keyword lists are
+  written for IT bids, so edit `CATEGORIES` in `tender_triage.py` for another
+  sector.
 
-Accepts `.pdf`, `.docx`, `.md` and `.txt`. No API key, no model call, deterministic
-output.
+No API key. No AI model. The same input always gives the same output.
 
-It refuses documents that are not question sets:
+Give it a contract by mistake and it says so, instead of inventing questions:
 
 ```
-$ python3 tender_triage.py real/docs/lincs_journey.pdf answer_library.json
 lincs_journey.pdf: CONTRACT — not a question set, nothing to triage.
   Numbered items in this document are contract clauses, not questions.
 ```
 
-(`lincs_journey.pdf` is one of the real test documents described below. They are
-not included in this repo.)
-
 ## How it decides
 
-Requirements are extracted with their scoring type (Pass/Fail or weighted), the
-weighting, the word limit and any mandatory MUST language. Each is routed to a
-subject area and owning team, then scored against the answer library using
-log-IDF weighted token coverage, with a distinctive-token floor and a penalty for
-matches that cross subject areas.
+There's no AI here, just careful word matching. Three rules stop it being
+fooled:
 
-In plain terms: words that appear in most stored answers ("customer", "process")
-count for little or nothing, a match has to share words that are specific to a
-subject, and a match from a different subject area (a security answer for a
-sustainability question) is marked down.
+1. **Common words barely count.** A word like "customer" turns up in most
+   answers, so sharing it proves very little.
+2. **Specific words must match.** To be called a REUSE, the question and the old
+   answer have to share at least two words that belong to a particular topic.
+3. **Topics should agree.** A security answer matched to a sustainability
+   question loses more than half its score, however similar the wording.
 
-Routing is by keyword list. The lists in `tender_triage.py` are written for IT
-supply and support bids and would need changing for another sector.
+It's cautious on purpose. A wrong REUSE is the expensive mistake: a question
+that was never really answered goes out in a bid nobody re-checked. A wrong GAP
+only costs someone a read of a question they didn't need to look at.
 
-## How good it is
+## How good is it?
 
-Measured, not asserted. Two things are measured separately because they fail
-differently.
+![First version compared with now. Reuse calls it gets right: 73% then, 95% now. Real questions it finds: 0% then, 99% now. Made-up questions from files with no questions in them: 358 then, 1 now.](images/before-after.svg)
 
-**Ingestion** — tested against ten files downloaded through the API of Contracts
-Finder (the UK government's public register of contract notices), each opened and
-checked by hand:
+It was measured, not guessed. There are two separate tests.
 
-| | |
+**Test 1: does it match questions to the right answers?**
+Checked against 35 hand-labelled questions in the sample tender.
+
+| Measure | Result |
 |---|---|
-| Classification accuracy | 70% (7/10) |
-| Contracts correctly refused | 2/2 |
-| Requirement recall | 99% (80/81) |
-| Phantom requirements from non-question documents | 1 |
+| When it says REUSE, it's right | 95% (19/20) |
+| Reusable answers it found | 95% (19/20) |
+| Picked the correct old answer | 100% (19/19) |
+| Real gaps wrongly called reusable | 0 |
 
-Eight of the ten are readable documents. The other two are downloads that failed
-— an error page saved under a `.pdf` or `.docx` name — which the tool is expected
-to report as unreadable; they are two of the seven it got right. Recall compares
-how many requirements were extracted from each question set with how many were
-counted by hand, not item by item. `real/ground_truth.json` lists what each file
-is and what was counted.
+**Test 2: can it read real tender documents?**
+Checked against ten files downloaded from Contracts Finder (the UK government's
+register of public contracts), each one opened and checked by hand.
 
-**The ten files are not in this repo.** They are other organisations' tender
-documents and are not redistributed here, so `evaluate_ingest.py` has nothing to
-run on in a fresh clone and the ingestion figures cannot be reproduced from this
-repo alone. To run it on documents of your own, put them in `real/docs/` and list
-each one in `real/ground_truth.json` with its true verdict and question count:
+| Measure | Result |
+|---|---|
+| Worked out what kind of document it was | 70% (7/10) |
+| Contracts correctly turned away | 2/2 |
+| Real questions found | 99% (80/81) |
+| Made-up questions from files with no questions in them | 1 |
+
+The first version was much worse. [CALIBRATION.md](CALIBRATION.md) tells that
+story: what broke, why, and what fixed it.
+
+### The fine print
+
+- **Test 1 is small.** It's one made-up tender. The labels were written first
+  and never edited, but the settings were then tuned against those same 35
+  labels. It has not been scored on real tenders.
+- **Two of the ten real files were failed downloads.** They are error pages, not
+  documents. They're expected to come back as unreadable, and they are two of
+  the seven it got right.
+- **"Real questions found" compares totals.** It's how many were found against
+  how many were counted by hand, not a question-by-question check.
+- **The ten real files aren't in this repo.** They belong to other
+  organisations, so test 2 can't be re-run from here. Test 1 can:
+  `python3 evaluate.py triage_output.json gold_labels.json`
+- **The sample tender's weightings add up to 123%, not 100%.** A weighting is
+  the share of the marks a question is worth. So the "21% with no source
+  material" in the report really means 21 points out of 123.
+
+<details>
+<summary>Want to run test 2 on your own documents?</summary>
+
+Put your files in `real/docs/`. List each one in `real/ground_truth.json` with
+what it really is and how many questions it has. Then run:
 
 ```bash
 python3 evaluate_ingest.py real/docs real/ground_truth.json
 ```
 
-Contracts Finder publishes notices through its OCDS search API
-(`https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search`).
-Attachment links in the results return 403 unless the request carries a browser
+Contracts Finder has a search API at
+`https://www.contractsfinder.service.gov.uk/Published/Notices/OCDS/Search`.
+Attachment links give a 403 error unless your request sends a browser
 `User-Agent` header.
 
-**Matching** — tested against 35 hand-written labels on the synthetic ITT:
+</details>
 
-| | |
+## What's in the box
+
+| File | What it is |
 |---|---|
-| REUSE precision | 95% (19/20) |
-| REUSE recall | 95% (19/20) |
-| Correct source answer identified | 100% (19/19) |
-| Real gaps wrongly called reusable | 0 |
-
-The three commands under *Running it* reproduce this table. The labels were
-written before the scoring was tuned and not edited afterwards, but the
-thresholds were then tuned against those same 35 labels, on one synthetic
-document. So this shows the matcher works on that document. It is not a
-measurement of matching accuracy on real tenders, and this repo does not contain
-one.
-
-Both numbers started far worse. The first matcher reported 74% of the document
-reusable at 73% precision, having matched the largest question in the bid to an
-unrelated answer. The first parser scored 0% precision and 0% recall on real
-documents — it extracted 358 requirements from contracts containing no questions,
-and nothing at all from the two documents that did. `CALIBRATION.md` records both
-failures, what caused them and what fixed them.
-
-## Files
-
-| | |
-|---|---|
-| `ingest.py` | Loads PDF/Word/Markdown, classifies the document, extracts requirements |
-| `tender_triage.py` | Routing, matching and reporting |
-| `report_html.py` | Renders the triage output as a single HTML page |
-| `evaluate.py` | Scores matching against the manual labels |
-| `evaluate_ingest.py` | Scores ingestion against the real-document ground truth (needs the documents, which are not included) |
-| `real/ground_truth.json` | Hand-checked verdict and question count for each real document |
-| `sample_itt.md` | Synthetic ITT, structured on UK public sector conventions |
-| `answer_library.json` | 18 reusable answers standing in for a bid team's answer bank |
-| `gold_labels.json` | Manual labels, written before the scoring was tuned |
-| `triage_report.md`, `triage_report.html` | Output of the sample run, kept as an example |
-| `CALIBRATION.md` | Why the thresholds are what they are |
-| `requirements.txt` | The two packages needed for PDF and Word input |
+| `tender_triage.py` | The main tool. Sends questions to teams, matches them to answers, writes the report |
+| `ingest.py` | Opens the document, checks it's a question set, pulls out the questions |
+| `report_html.py` | Turns the results into a web page |
+| `evaluate.py` | Test 1: scores the matching |
+| `evaluate_ingest.py` | Test 2: scores the document reading (needs the real files) |
+| `sample_itt.md` | The made-up sample tender. ITT stands for Invitation to Tender |
+| `answer_library.json` | 18 sample past answers |
+| `gold_labels.json` | The 35 hand-written labels for test 1 |
+| `real/ground_truth.json` | What each of the ten real files is, and how many questions it has |
+| `triage_report.md`, `triage_report.html` | The sample report |
+| `CALIBRATION.md` | How the settings were chosen, and what went wrong first |
+| `images/` | The pictures on this page |
+| `requirements.txt` | The two packages needed for PDF and Word files |

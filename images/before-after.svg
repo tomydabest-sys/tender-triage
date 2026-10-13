@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 220" width="840" height="220" role="img" aria-labelledby="ba-title ba-desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="ba-title">First version compared with now</title>
+  <desc id="ba-desc">Reuse calls it gets right: 73 percent in the first version, 95 percent now (19 of 20 on the sample tender). Real questions it finds: 0 percent in the first version, 99 percent now (80 of 81 across ten downloaded files). Made-up questions from files with no questions in them: 358 in the first version, 1 now.</desc>
+  <style>
+    .bg{fill:#fbfaf8;stroke:#e5e2dc}
+    .card{fill:#ffffff;stroke:#e5e2dc}
+    .ink{fill:#1a1d21}
+    .muted{fill:#6b7280}
+    .flow{fill:none;stroke:#9aa0a8;stroke-width:1.5}
+    .flow-head{fill:#9aa0a8}
+    .rule{stroke:#e5e2dc}
+    @media (prefers-color-scheme: dark){
+      .bg{fill:#141518;stroke:#2d3036}
+      .card{fill:#1c1e22;stroke:#2d3036}
+      .ink{fill:#eceae6}
+      .muted{fill:#9aa0a8}
+      .flow{stroke:#6b7280}
+      .flow-head{fill:#6b7280}
+      .rule{stroke:#2d3036}
+    }
+  </style>
+  <defs>
+    <marker id="ba-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+      <path class="flow-head" d="M0 0.8 L7 4 L0 7.2 z"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0.5" y="0.5" width="839" height="219" rx="12"/>
+
+  <!-- tile 1 -->
+  <rect class="card" x="24.5" y="20.5" width="255" height="179" rx="10"/>
+  <text class="ink" x="44" y="52" font-size="14" font-weight="600">Reuse calls it gets right</text>
+  <text class="muted" x="44" y="112" font-size="24" font-weight="600">73%</text>
+  <text class="muted" x="44" y="134" font-size="11.5">first version</text>
+  <path class="flow" d="M112 103 H138" marker-end="url(#ba-arrow)"/>
+  <text class="ink" x="152" y="114" font-size="42" font-weight="700">95%</text>
+  <text class="muted" x="154" y="134" font-size="11.5">now</text>
+  <line class="rule" x1="44" y1="152.5" x2="260" y2="152.5"/>
+  <text class="muted" x="44" y="173" font-size="12">19 of 20 correct</text>
+  <text class="muted" x="44" y="189" font-size="12">sample tender, 35 questions</text>
+
+  <!-- tile 2 -->
+  <rect class="card" x="292.5" y="20.5" width="255" height="179" rx="10"/>
+  <text class="ink" x="312" y="52" font-size="14" font-weight="600">Real questions it finds</text>
+  <text class="muted" x="312" y="112" font-size="24" font-weight="600">0%</text>
+  <text class="muted" x="312" y="134" font-size="11.5">first version</text>
+  <path class="flow" d="M380 103 H406" marker-end="url(#ba-arrow)"/>
+  <text class="ink" x="420" y="114" font-size="42" font-weight="700">99%</text>
+  <text class="muted" x="422" y="134" font-size="11.5">now</text>
+  <line class="rule" x1="312" y1="152.5" x2="528" y2="152.5"/>
+  <text class="muted" x="312" y="173" font-size="12">80 of 81 found</text>
+  <text class="muted" x="312" y="189" font-size="12">ten downloaded files</text>
+
+  <!-- tile 3 -->
+  <rect class="card" x="560.5" y="20.5" width="255" height="179" rx="10"/>
+  <text class="ink" x="580" y="52" font-size="14" font-weight="600">Questions it makes up</text>
+  <text class="muted" x="580" y="112" font-size="24" font-weight="600">358</text>
+  <text class="muted" x="580" y="134" font-size="11.5">first version</text>
+  <path class="flow" d="M648 103 H674" marker-end="url(#ba-arrow)"/>
+  <text class="ink" x="688" y="114" font-size="42" font-weight="700">1</text>
+  <text class="muted" x="690" y="134" font-size="11.5">now</text>
+  <line class="rule" x1="580" y1="152.5" x2="796" y2="152.5"/>
+  <text class="muted" x="580" y="173" font-size="12">lower is better</text>
+  <text class="muted" x="580" y="189" font-size="12">from files with no questions in them</text>
+</svg>

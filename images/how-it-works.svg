@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 290" width="840" height="290" role="img" aria-labelledby="hiw-title hiw-desc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="hiw-title">How tender triage works</title>
+  <desc id="hiw-desc">You give it a tender document and your past answers. It checks the document, pulls out every question and looks for a past answer to each. Every question comes back labelled reuse, partial or gap, and anything not ready is sorted into a to-do list for each team.</desc>
+  <style>
+    .bg{fill:#fbfaf8;stroke:#e5e2dc}
+    .card{fill:#ffffff;stroke:#e5e2dc}
+    .tint{fill:#f1efe9}
+    .ink{fill:#1a1d21}
+    .muted{fill:#6b7280}
+    .glyph{fill:none;stroke:#1a1d21;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    .badge{fill:#1a1d21}
+    .badge-num{fill:#ffffff}
+    .flow{fill:none;stroke:#9aa0a8;stroke-width:1.5}
+    .flow-head{fill:#9aa0a8}
+    .rule{stroke:#e5e2dc}
+    .good{fill:#0ca30c}
+    .warn{fill:#fab219}
+    .crit{fill:#d03b3b}
+    .on-status{fill:none;stroke:#ffffff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .on-warn{stroke:#1a1d21}
+    .on-warn-fill{fill:#1a1d21}
+    @media (prefers-color-scheme: dark){
+      .bg{fill:#141518;stroke:#2d3036}
+      .card{fill:#1c1e22;stroke:#2d3036}
+      .tint{fill:#2a2d33}
+      .ink{fill:#eceae6}
+      .muted{fill:#9aa0a8}
+      .glyph{stroke:#eceae6}
+      .badge{fill:#eceae6}
+      .badge-num{fill:#141518}
+      .flow{stroke:#6b7280}
+      .flow-head{fill:#6b7280}
+      .rule{stroke:#2d3036}
+    }
+  </style>
+  <defs>
+    <marker id="hiw-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+      <path class="flow-head" d="M0 0.8 L7 4 L0 7.2 z"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0.5" y="0.5" width="839" height="289" rx="12"/>
+
+  <!-- column headings -->
+  <g class="muted" font-size="11.5" font-weight="700" letter-spacing="1.2">
+    <text x="24" y="36">YOU GIVE IT</text>
+    <text x="280" y="36">IT DOES THE SORTING</text>
+    <text x="604" y="36">YOU GET</text>
+  </g>
+
+  <!-- inputs -->
+  <rect class="card" x="24.5" y="52.5" width="211" height="73" rx="10"/>
+  <rect class="tint" x="38" y="71" width="36" height="36" rx="8"/>
+  <path class="glyph" d="M49 79 H58 L63 84 V99 H49 Z M58 79 V84 H63 M52 89 H60 M52 93 H60"/>
+  <text class="ink" x="86" y="85" font-size="15" font-weight="600">A tender</text>
+  <text class="muted" x="86" y="104" font-size="12.5">PDF, Word or Markdown</text>
+
+  <rect class="card" x="24.5" y="142.5" width="211" height="73" rx="10"/>
+  <rect class="tint" x="38" y="161" width="36" height="36" rx="8"/>
+  <g class="glyph">
+    <rect x="47" y="169.5" width="18" height="5" rx="1.5"/>
+    <rect x="47" y="176.5" width="18" height="5" rx="1.5"/>
+    <rect x="47" y="183.5" width="18" height="5" rx="1.5"/>
+  </g>
+  <text class="ink" x="86" y="175" font-size="15" font-weight="600">Your past answers</text>
+  <text class="muted" x="86" y="194" font-size="12.5">from earlier bids</text>
+
+  <!-- flow: inputs to the tool -->
+  <path class="flow" d="M240 89 C262 89 254 134 273 134"/>
+  <path class="flow" d="M240 179 C262 179 254 134 273 134" marker-end="url(#hiw-arrow)"/>
+
+  <!-- the three steps -->
+  <rect class="card" x="280.5" y="52.5" width="279" height="163" rx="10"/>
+  <g>
+    <circle class="badge" cx="308" cy="84" r="12"/>
+    <text class="badge-num" x="308" y="88.5" font-size="12.5" font-weight="700" text-anchor="middle">1</text>
+    <text class="ink" x="330" y="81" font-size="15" font-weight="600">Checks the document</text>
+    <text class="muted" x="330" y="99" font-size="12.5">contracts get turned away</text>
+
+    <circle class="badge" cx="308" cy="130" r="12"/>
+    <text class="badge-num" x="308" y="134.5" font-size="12.5" font-weight="700" text-anchor="middle">2</text>
+    <text class="ink" x="330" y="127" font-size="15" font-weight="600">Pulls out every question</text>
+    <text class="muted" x="330" y="145" font-size="12.5">with its score and word limit</text>
+
+    <circle class="badge" cx="308" cy="176" r="12"/>
+    <text class="badge-num" x="308" y="180.5" font-size="12.5" font-weight="700" text-anchor="middle">3</text>
+    <text class="ink" x="330" y="173" font-size="15" font-weight="600">Looks for a past answer</text>
+    <text class="muted" x="330" y="191" font-size="12.5">one question at a time</text>
+  </g>
+
+  <!-- flow: tool to the three verdicts -->
+  <path class="flow" d="M564 134 C584 134 578 76 597 76" marker-end="url(#hiw-arrow)"/>
+  <path class="flow" d="M564 134 H597" marker-end="url(#hiw-arrow)"/>
+  <path class="flow" d="M564 134 C584 134 578 192 597 192" marker-end="url(#hiw-arrow)"/>
+
+  <!-- verdicts: colour is always paired with an icon and a label -->
+  <rect class="card" x="604.5" y="52.5" width="211" height="47" rx="10"/>
+  <circle class="good" cx="630" cy="76" r="13"/>
+  <path class="on-status" d="M624.4 76.4 L628.3 80.3 L635.8 72"/>
+  <text class="ink" x="654" y="73" font-size="13" font-weight="700" letter-spacing="0.6">REUSE</text>
+  <text class="muted" x="654" y="90" font-size="12.5">already answered</text>
+
+  <rect class="card" x="604.5" y="110.5" width="211" height="47" rx="10"/>
+  <circle class="warn" cx="630" cy="134" r="13"/>
+  <circle class="on-status on-warn" cx="630" cy="134" r="6.2" stroke-width="1.8"/>
+  <path class="on-warn-fill" d="M630 127.8 A6.2 6.2 0 0 1 630 140.2 Z"/>
+  <text class="ink" x="654" y="131" font-size="13" font-weight="700" letter-spacing="0.6">PARTIAL</text>
+  <text class="muted" x="654" y="148" font-size="12.5">close, needs a look</text>
+
+  <rect class="card" x="604.5" y="168.5" width="211" height="47" rx="10"/>
+  <circle class="crit" cx="630" cy="192" r="13"/>
+  <path class="on-status" d="M625.6 187.6 L634.4 196.4 M634.4 187.6 L625.6 196.4"/>
+  <text class="ink" x="654" y="189" font-size="13" font-weight="700" letter-spacing="0.6">GAP</text>
+  <text class="muted" x="654" y="206" font-size="12.5">nothing to start from</text>
+
+  <!-- footer -->
+  <line class="rule" x1="24" y1="236.5" x2="816" y2="236.5"/>
+  <text class="muted" x="420" y="265" font-size="13.5" text-anchor="middle">Anything that isn't ready is sorted into a to-do list, team by team.</text>
+</svg>
