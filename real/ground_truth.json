@@ -1,0 +1,26 @@
+{
+  "_note": "Hand-checked by opening each real document and counting. 'verdict' is what the document actually is; 'questions' is the number of genuine answerable requirements it contains. Documents were checked individually, not in aggregate.",
+  "source": "Contracts Finder OCDS API, notices published from 2026-07-01",
+  "documents": {
+    "lincs_journey.pdf": {"verdict": "CONTRACT", "questions": 0,
+      "what": "Lincolnshire CC call-off contract and order form. 314 numbered items, all contract clauses."},
+    "creative_c.pdf": {"verdict": "CONTRACT", "questions": 0,
+      "what": "Take it away scheme rules. 234 numbered items, all scheme terms."},
+    "creative_a.pdf": {"verdict": "QUESTION_SET", "questions": 10,
+      "what": "Creative United ITT, 36pp. Questions B1-B3, B7-B8, C1, C4, D1, E1, F1 across section tables."},
+    "creative_b.pdf": {"verdict": "INFORMATION", "questions": 0,
+      "what": "Short covering document, no questions."},
+    "creative_itt.docx": {"verdict": "QUESTION_SET", "questions": 59,
+      "what": "Creative United response template. 64-row matrix, 59 question rows plus headers."},
+    "leicester_1.docx": {"verdict": "QUESTION_SET", "questions": 12,
+      "what": "Leicester College ITT. Question schedule table Q1A-Q10."},
+    "leicester_2.docx": {"verdict": "INFORMATION", "questions": 0,
+      "what": "Specification. Numbered headings are topic labels, not questions."},
+    "bsbc_eval.docx": {"verdict": "INFORMATION", "questions": 0,
+      "what": "Evaluation brief, prose only, no question structure."},
+    "mod_supply.pdf": {"verdict": "UNREADABLE", "questions": 0,
+      "what": "Download returned an error page, not a PDF."},
+    "chemonics.docx": {"verdict": "UNREADABLE", "questions": 0,
+      "what": "Download returned an error page, not a Word file."}
+  }
+}

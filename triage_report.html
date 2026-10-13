@@ -1,0 +1,286 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tender triage</title><style>
+:root{--bg:#fbfaf8;--panel:#fff;--ink:#1a1d21;--muted:#6b7280;--line:#e5e2dc;
+--gap:#b4381f;--part:#9a6b1f;--reuse:#2f6b45;--accent:#1a1d21}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,
+BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:40px 24px 80px}
+header{border-bottom:2px solid var(--ink);padding-bottom:18px;margin-bottom:28px}
+h1{font-size:25px;margin:0 0 4px;letter-spacing:-.02em}
+.sub{color:var(--muted);font-size:13.5px}
+h2{font-size:12px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);
+margin:38px 0 14px;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:15px 16px}
+.card .n{font-size:27px;font-weight:650;letter-spacing:-.02em;line-height:1.1}
+.card .l{font-size:12px;color:var(--muted);margin-top:5px}
+.card.alert{border-color:var(--gap);background:#fdf5f3}
+.card.alert .n{color:var(--gap)}
+.bar{display:flex;height:9px;border-radius:5px;overflow:hidden;margin:6px 0 8px;
+border:1px solid var(--line)}
+.bar i{display:block}
+.bar .r{background:var(--reuse)}.bar .p{background:var(--part)}.bar .g{background:var(--gap)}
+.key{font-size:12.5px;color:var(--muted);display:flex;gap:16px;flex-wrap:wrap}
+.key b{font-weight:600;color:var(--ink)}
+.dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px}
+.team{background:var(--panel);border:1px solid var(--line);border-radius:9px;
+padding:14px 16px;margin-bottom:10px}
+.team h3{margin:0 0 3px;font-size:14.5px}
+.team .meta{font-size:12.5px;color:var(--muted);margin-bottom:9px}
+.item{display:flex;gap:9px;padding:5px 0;border-top:1px solid var(--line);font-size:13.5px}
+.item:first-of-type{border-top:0}
+.tag{flex:none;font-size:10.5px;font-weight:650;letter-spacing:.05em;padding:2px 6px;
+border-radius:4px;height:fit-content;margin-top:2px}
+.tag.GAP{background:#fbe9e5;color:var(--gap)}
+.tag.PARTIAL{background:#faf0dc;color:var(--part)}
+.tag.REUSE{background:#e7f1ea;color:var(--reuse)}
+.ref{flex:none;font-weight:600;min-width:46px;font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-size:13px;background:var(--panel);
+border:1px solid var(--line);border-radius:9px;overflow:hidden}
+th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+color:var(--muted);padding:9px 11px;border-bottom:1px solid var(--line);font-weight:600}
+td{padding:8px 11px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.num{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.q{color:var(--muted)}
+.note{font-size:12.5px;color:var(--muted);margin-top:26px;padding-top:14px;
+border-top:1px solid var(--line)}
+@media(prefers-color-scheme:dark){:root{--bg:#141518;--panel:#1c1e22;--ink:#eceaE6;
+--muted:#9aa0a8;--line:#2d3036;--gap:#e8705a;--part:#d9a441;--reuse:#5fae7e}
+.card.alert{background:#2a1a17}.tag.GAP{background:#3a201c}.tag.PARTIAL{background:#332a17}
+.tag.REUSE{background:#1b2d22}}
+</style></head><body><div class="wrap">
+<header><h1>Tender triage</h1>
+<div class="sub">sample_itt.md &middot; 35 requirements extracted</div></header>
+<div class="cards">
+<div class="card"><div class="n">20</div><div class="l">answerable from existing material</div></div>
+<div class="card"><div class="n">10</div><div class="l">partial &mdash; needs editing</div></div>
+<div class="card alert"><div class="n">5</div><div class="l">nothing to start from</div></div>
+<div class="card alert"><div class="n">1</div>
+<div class="l">Pass/Fail with no source</div></div>
+</div>
+<div style="margin-top:18px">
+<div class="bar"><i class="r" style="width:57.1%"></i>
+<i class="p" style="width:28.6%"></i>
+<i class="g" style="width:14.3%"></i></div>
+<div class="key">
+<span><span class="dot" style="background:var(--reuse)"></span>Reuse <b>57%</b></span>
+<span><span class="dot" style="background:var(--part)"></span>Partial <b>29%</b></span>
+<span><span class="dot" style="background:var(--gap)"></span>Gap <b>14%</b></span>
+<span>Scored weighting with no source material: <b>21.0%</b></span>
+</div></div><h2>Disqualifying if left blank</h2>
+<div class="team" style="border-color:var(--gap)">
+<div class="meta">These are Pass/Fail requirements with no source answer. A bid
+submitted without them is rejected regardless of how the rest scores.</div><div class="item"><span class="tag GAP">GAP</span>
+<span class="ref">1.5</span><span>Provide audited accounts for the last two financial years. The Authority reserves the right to reject bidders whose financial standing is assessed as inadequate.</span></div></div><h2>Work queue by owning team</h2><div class="team"><h3>Sustainability</h3>
+<div class="meta">3 requirements &middot; 2 with nothing to start
+from &middot; 1750 words to draft</div><div class="item"><span class="tag GAP">GAP</span>
+<span class="ref">1.3</span><span>Bidders SHOULD hold ISO 14001 certification for environmental management. Where not held, describe equivalent arrangements.</span></div><div class="item"><span class="tag GAP">GAP</span>
+<span class="ref">5.1</span><span>Describe how you will deliver social value under this contract, aligned to the Social Value Model themes. Responses MUST include measurable commitments.</span></div><div class="item"><span class="tag PARTIAL">PARTIAL</span>
+<span class="ref">5.4</span><span>Describe the employment, apprenticeship and skills opportunities you would create locally as a result of this contract.</span></div></div><div class="team"><h3>AI &amp; Transformation</h3>
+<div class="meta">3 requirements &middot; 2 with nothing to start
+from &middot; 1750 words to draft</div><div class="item"><span class="tag GAP">GAP</span>
+<span class="ref">7.1</span><span>Describe how you would support the Authority in adopting Microsoft 365 Copilot, including licensing advice, readiness assessment and user adoption.</span></div><div class="item"><span class="tag GAP">GAP</span>
+<span class="ref">7.3</span><span>Describe how you would keep the Authority informed of emerging technology relevant to local government over the contract term.</span></div><div class="item"><span class="tag PARTIAL">PARTIAL</span>
+<span class="ref">7.2</span><span>Describe how artificial intelligence or automation is used within your own operations to improve service delivery to customers.</span></div></div><div class="team"><h3>Bid Team</h3>
+<div class="meta">3 requirements &middot; 1 with nothing to start
+from &middot; no word limits stated</div><div class="item"><span class="tag GAP">GAP</span>
+<span class="ref">1.5</span><span>Provide audited accounts for the last two financial years. The Authority reserves the right to reject bidders whose financial standing is assessed as inadequate.</span></div><div class="item"><span class="tag PARTIAL">PARTIAL</span>
+<span class="ref">1.4</span><span>Please confirm your organisation&#x27;s registered office, company registration number and the legal entity that would hold the contract.</span></div><div class="item"><span class="tag PARTIAL">PARTIAL</span>
+<span class="ref">1.6</span><span>Bidders MUST confirm compliance with the Modern Slavery Act 2015 and provide a link to the current statement.</span></div></div><div class="team"><h3>Technical Services</h3>
+<div class="meta">2 requirements &middot; 0 with nothing to start
+from &middot; 800 words to draft</div><div class="item"><span class="tag PARTIAL">PARTIAL</span>
+<span class="ref">2.5</span><span>Describe your approach to supply chain resilience and component shortages, including how you would maintain delivery performance during constrained supply.</span></div><div class="item"><span class="tag PARTIAL">PARTIAL</span>
+<span class="ref">5.5</span><span>Describe your packaging reduction approach for bulk device deliveries.</span></div></div><div class="team"><h3>Commercial</h3>
+<div class="meta">2 requirements &middot; 0 with nothing to start
+from &middot; no word limits stated</div><div class="item"><span class="tag PARTIAL">PARTIAL</span>
+<span class="ref">6.1</span><span>Complete the attached pricing schedule in full. Prices MUST be held firm for the first 24 months.</span></div><div class="item"><span class="tag PARTIAL">PARTIAL</span>
+<span class="ref">6.4</span><span>Confirm acceptance of the Authority&#x27;s standard terms and conditions, or detail any proposed amendments.</span></div></div><div class="team"><h3>Service Delivery</h3>
+<div class="meta">1 requirements &middot; 0 with nothing to start
+from &middot; 500 words to draft</div><div class="item"><span class="tag PARTIAL">PARTIAL</span>
+<span class="ref">3.5</span><span>Describe your management information and reporting capability, including the frequency, format and content of reports provided to the Authority.</span></div></div><div class="team"><h3>Information Security</h3>
+<div class="meta">1 requirements &middot; 0 with nothing to start
+from &middot; no word limits stated</div><div class="item"><span class="tag PARTIAL">PARTIAL</span>
+<span class="ref">4.1</span><span>All personal data MUST be processed within the United Kingdom. Confirm compliance and describe your data residency arrangements.</span></div></div><h2>Full register</h2><table><thead><tr><th>Ref</th><th>Question</th>
+<th>Scoring</th><th class="num">Wt%</th><th class="num">Words</th><th>Category</th>
+<th>Status</th><th>Source</th></tr></thead><tbody><tr><td><b>1.1</b></td>
+<td class="q">Bidders MUST hold current Cyber Essentials Plus certification. Please provide the certificate number and expiry date.</td><td>Pass/Fail</td>
+<td class="num">&mdash;</td>
+<td class="num">&mdash;</td><td>Security &amp; Data Protection</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SEC-01</td></tr><tr><td><b>1.2</b></td>
+<td class="q">Bidders MUST be certified to ISO 27001:2022. State certificate number, issuing body and scope of certification.</td><td>Pass/Fail</td>
+<td class="num">&mdash;</td>
+<td class="num">&mdash;</td><td>Security &amp; Data Protection</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SEC-01</td></tr><tr><td><b>1.3</b></td>
+<td class="q">Bidders SHOULD hold ISO 14001 certification for environmental management. Where not held, describe equivalent arrangements.</td><td>Weighted</td>
+<td class="num">2.0</td>
+<td class="num">&mdash;</td><td>Social Value &amp; Sustainability</td>
+<td><span class="tag GAP">GAP</span></td>
+<td>—</td></tr><tr><td><b>1.4</b></td>
+<td class="q">Please confirm your organisation&#x27;s registered office, company registration number and the legal entity that would hold the contrac</td><td>Pass/Fail</td>
+<td class="num">&mdash;</td>
+<td class="num">&mdash;</td><td>Corporate &amp; Compliance</td>
+<td><span class="tag PARTIAL">PARTIAL</span></td>
+<td>A-SEC-01</td></tr><tr><td><b>1.5</b></td>
+<td class="q">Provide audited accounts for the last two financial years. The Authority reserves the right to reject bidders whose financial stan</td><td>Pass/Fail</td>
+<td class="num">&mdash;</td>
+<td class="num">&mdash;</td><td>Corporate &amp; Compliance</td>
+<td><span class="tag GAP">GAP</span></td>
+<td>—</td></tr><tr><td><b>1.6</b></td>
+<td class="q">Bidders MUST confirm compliance with the Modern Slavery Act 2015 and provide a link to the current statement.</td><td>Pass/Fail</td>
+<td class="num">&mdash;</td>
+<td class="num">&mdash;</td><td>Corporate &amp; Compliance</td>
+<td><span class="tag PARTIAL">PARTIAL</span></td>
+<td>A-SEC-01</td></tr><tr><td><b>2.1</b></td>
+<td class="q">Describe your proposed range of end user devices, covering laptops, desktops, tablets and accessories, and how the catalogue will </td><td>Weighted</td>
+<td class="num">8.0</td>
+<td class="num">1000</td><td>Technical Solution</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-TEC-01</td></tr><tr><td><b>2.2</b></td>
+<td class="q">The Authority operates a mixed Windows 11 and iPadOS estate of approximately 4,200 devices. Describe your approach to Windows 11 r</td><td>Weighted</td>
+<td class="num">6.0</td>
+<td class="num">750</td><td>Technical Solution</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-TEC-03</td></tr><tr><td><b>2.3</b></td>
+<td class="q">Describe your device provisioning process, including zero-touch enrolment via Microsoft Intune and Apple Business Manager, asset t</td><td>Weighted</td>
+<td class="num">7.0</td>
+<td class="num">750</td><td>Technical Solution</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-TEC-02</td></tr><tr><td><b>2.4</b></td>
+<td class="q">Devices MUST be delivered configured, asset-tagged and ready for end user issue. Describe your configuration centre capability and</td><td>Weighted</td>
+<td class="num">5.0</td>
+<td class="num">500</td><td>Technical Solution</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-TEC-02</td></tr><tr><td><b>2.5</b></td>
+<td class="q">Describe your approach to supply chain resilience and component shortages, including how you would maintain delivery performance d</td><td>Weighted</td>
+<td class="num">4.0</td>
+<td class="num">500</td><td>Technical Solution</td>
+<td><span class="tag PARTIAL">PARTIAL</span></td>
+<td>A-TEC-01</td></tr><tr><td><b>2.6</b></td>
+<td class="q">Describe your proposed approach to device lifecycle refresh scheduling across a four-year term.</td><td>Weighted</td>
+<td class="num">4.0</td>
+<td class="num">500</td><td>Technical Solution</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-TEC-01</td></tr><tr><td><b>3.1</b></td>
+<td class="q">The supplier MUST provide a UK-based service desk operating 08:00–18:00 Monday to Friday excluding public holidays. Describe your </td><td>Weighted</td>
+<td class="num">6.0</td>
+<td class="num">750</td><td>Service &amp; Support</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SVC-01</td></tr><tr><td><b>3.2</b></td>
+<td class="q">State your proposed service levels for P1, P2 and P3 incidents, including response and resolution targets, and the service credit </td><td>Weighted</td>
+<td class="num">6.0</td>
+<td class="num">500</td><td>Service &amp; Support</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SVC-02</td></tr><tr><td><b>3.3</b></td>
+<td class="q">Describe your approach to warranty management and in-warranty repair, including average turnaround times evidenced from comparable</td><td>Weighted</td>
+<td class="num">4.0</td>
+<td class="num">500</td><td>Service &amp; Support</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-TEC-04</td></tr><tr><td><b>3.4</b></td>
+<td class="q">Describe the account management structure you would put in place, naming roles and escalation routes.</td><td>Weighted</td>
+<td class="num">3.0</td>
+<td class="num">500</td><td>Service &amp; Support</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SVC-03</td></tr><tr><td><b>3.5</b></td>
+<td class="q">Describe your management information and reporting capability, including the frequency, format and content of reports provided to </td><td>Weighted</td>
+<td class="num">4.0</td>
+<td class="num">500</td><td>Service &amp; Support</td>
+<td><span class="tag PARTIAL">PARTIAL</span></td>
+<td>A-SVC-04</td></tr><tr><td><b>3.6</b></td>
+<td class="q">Describe your approach to contract mobilisation and transition from the incumbent supplier within a 8 week window.</td><td>Weighted</td>
+<td class="num">5.0</td>
+<td class="num">750</td><td>Mobilisation</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-MOB-01</td></tr><tr><td><b>4.1</b></td>
+<td class="q">All personal data MUST be processed within the United Kingdom. Confirm compliance and describe your data residency arrangements.</td><td>Pass/Fail</td>
+<td class="num">&mdash;</td>
+<td class="num">&mdash;</td><td>Security &amp; Data Protection</td>
+<td><span class="tag PARTIAL">PARTIAL</span></td>
+<td>A-SEC-04</td></tr><tr><td><b>4.2</b></td>
+<td class="q">Describe your information security management arrangements, including access control, vulnerability management and penetration tes</td><td>Weighted</td>
+<td class="num">6.0</td>
+<td class="num">750</td><td>Security &amp; Data Protection</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SEC-02</td></tr><tr><td><b>4.3</b></td>
+<td class="q">Describe your secure data erasure process for returned and end-of-life devices, including the standard applied and the certificati</td><td>Weighted</td>
+<td class="num">4.0</td>
+<td class="num">500</td><td>Security &amp; Data Protection</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SEC-03</td></tr><tr><td><b>4.4</b></td>
+<td class="q">Describe your incident response and breach notification process, including the timescales within which the Authority would be noti</td><td>Weighted</td>
+<td class="num">4.0</td>
+<td class="num">500</td><td>Security &amp; Data Protection</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SEC-04</td></tr><tr><td><b>4.5</b></td>
+<td class="q">Confirm that all staff with access to Authority data MUST hold BPSS clearance as a minimum. Describe your vetting process.</td><td>Pass/Fail</td>
+<td class="num">&mdash;</td>
+<td class="num">&mdash;</td><td>Security &amp; Data Protection</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SEC-05</td></tr><tr><td><b>5.1</b></td>
+<td class="q">Describe how you will deliver social value under this contract, aligned to the Social Value Model themes. Responses MUST include m</td><td>Weighted</td>
+<td class="num">10.0</td>
+<td class="num">1000</td><td>Social Value &amp; Sustainability</td>
+<td><span class="tag GAP">GAP</span></td>
+<td>—</td></tr><tr><td><b>5.2</b></td>
+<td class="q">Describe your approach to circular economy and device reuse, including the proportion of returned devices you would expect to refu</td><td>Weighted</td>
+<td class="num">5.0</td>
+<td class="num">750</td><td>Social Value &amp; Sustainability</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SUS-01</td></tr><tr><td><b>5.3</b></td>
+<td class="q">State your organisation&#x27;s current carbon reduction commitments and target net zero date. Bidders MUST provide a Carbon Reduction P</td><td>Pass/Fail</td>
+<td class="num">&mdash;</td>
+<td class="num">&mdash;</td><td>Social Value &amp; Sustainability</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-SUS-02</td></tr><tr><td><b>5.4</b></td>
+<td class="q">Describe the employment, apprenticeship and skills opportunities you would create locally as a result of this contract.</td><td>Weighted</td>
+<td class="num">5.0</td>
+<td class="num">750</td><td>Social Value &amp; Sustainability</td>
+<td><span class="tag PARTIAL">PARTIAL</span></td>
+<td>A-SEC-05</td></tr><tr><td><b>5.5</b></td>
+<td class="q">Describe your packaging reduction approach for bulk device deliveries.</td><td>Weighted</td>
+<td class="num">2.0</td>
+<td class="num">300</td><td>Technical Solution</td>
+<td><span class="tag PARTIAL">PARTIAL</span></td>
+<td>A-TEC-01</td></tr><tr><td><b>6.1</b></td>
+<td class="q">Complete the attached pricing schedule in full. Prices MUST be held firm for the first 24 months.</td><td>Pass/Fail</td>
+<td class="num">&mdash;</td>
+<td class="num">&mdash;</td><td>Commercial</td>
+<td><span class="tag PARTIAL">PARTIAL</span></td>
+<td>A-COM-01</td></tr><tr><td><b>6.2</b></td>
+<td class="q">Describe your approach to open book pricing and the margin transparency you are prepared to offer the Authority.</td><td>Weighted</td>
+<td class="num">5.0</td>
+<td class="num">500</td><td>Commercial</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-COM-01</td></tr><tr><td><b>6.3</b></td>
+<td class="q">Describe any added value or cost reduction initiatives you would commit to over the contract term, including quantified savings.</td><td>Weighted</td>
+<td class="num">5.0</td>
+<td class="num">750</td><td>Commercial</td>
+<td><span class="tag REUSE">REUSE</span></td>
+<td>A-COM-02</td></tr><tr><td><b>6.4</b></td>
+<td class="q">Confirm acceptance of the Authority&#x27;s standard terms and conditions, or detail any proposed amendments.</td><td>Pass/Fail</td>
+<td class="num">&mdash;</td>
+<td class="num">&mdash;</td><td>Commercial</td>
+<td><span class="tag PARTIAL">PARTIAL</span></td>
+<td>A-SEC-05</td></tr><tr><td><b>7.1</b></td>
+<td class="q">Describe how you would support the Authority in adopting Microsoft 365 Copilot, including licensing advice, readiness assessment a</td><td>Weighted</td>
+<td class="num">6.0</td>
+<td class="num">750</td><td>Innovation &amp; AI</td>
+<td><span class="tag GAP">GAP</span></td>
+<td>—</td></tr><tr><td><b>7.2</b></td>
+<td class="q">Describe how artificial intelligence or automation is used within your own operations to improve service delivery to customers.</td><td>Weighted</td>
+<td class="num">4.0</td>
+<td class="num">500</td><td>Innovation &amp; AI</td>
+<td><span class="tag PARTIAL">PARTIAL</span></td>
+<td>A-SVC-03</td></tr><tr><td><b>7.3</b></td>
+<td class="q">Describe how you would keep the Authority informed of emerging technology relevant to local government over the contract term.</td><td>Weighted</td>
+<td class="num">3.0</td>
+<td class="num">500</td><td>Innovation &amp; AI</td>
+<td><span class="tag GAP">GAP</span></td>
+<td>—</td></tr></tbody></table><div class="note">Reuse calls measured at 95% precision against
+35 hand-written labels; requirement extraction at 99% recall against ten real
+tender documents. Every suggested answer is one a person already wrote and
+approved &mdash; nothing here is generated text.</div></div></body></html>

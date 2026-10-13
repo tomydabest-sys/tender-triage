@@ -1,0 +1,149 @@
+{
+  "_note": "Reusable approved answers from previous bids. In production this is the bid team's existing answer bank. Each entry is scored against incoming ITT requirements for reuse potential.",
+  "answers": [
+    {
+      "id": "A-SEC-01",
+      "title": "Cyber Essentials Plus and ISO 27001 accreditation",
+      "last_used": "2026-07-14",
+      "owner": "Information Security",
+      "text": "We hold current Cyber Essentials Plus certification and are certified to ISO 27001:2022 across our UK operations. Certificate numbers, issuing bodies and scope statements are provided in the appendix. Certification is maintained through annual surveillance audits and a full recertification cycle every three years.",
+      "tags": ["cyber essentials", "iso 27001", "certification", "accreditation", "information security", "certificate", "audit"]
+    },
+    {
+      "id": "A-SEC-02",
+      "title": "Information security management arrangements",
+      "last_used": "2026-08-02",
+      "owner": "Information Security",
+      "text": "Our information security management system operates on least-privilege access control with role-based permissions and mandatory multi-factor authentication. Vulnerability scanning runs continuously across the estate with monthly reporting, and independent CREST-accredited penetration testing is carried out annually and after any material change to in-scope systems.",
+      "tags": ["access control", "vulnerability management", "penetration testing", "security", "mfa", "scanning", "isms"]
+    },
+    {
+      "id": "A-SEC-03",
+      "title": "Secure data erasure and end-of-life devices",
+      "last_used": "2026-06-21",
+      "owner": "Service Operations",
+      "text": "All returned and end-of-life devices are sanitised to NCSC-recommended standards using certified erasure software, with a serial-level certificate of erasure issued to the customer for every device processed. Devices that cannot be sanitised are physically destroyed and a destruction certificate issued.",
+      "tags": ["data erasure", "sanitisation", "end of life", "destruction", "certificate", "disposal", "returned devices"]
+    },
+    {
+      "id": "A-SEC-04",
+      "title": "Incident response and breach notification",
+      "last_used": "2026-05-30",
+      "owner": "Information Security",
+      "text": "Security incidents are triaged against a defined severity matrix on detection. Where personal data is affected, the customer's named contact is notified without undue delay and in any event within 24 hours of confirmation, with a full written report following within 72 hours.",
+      "tags": ["incident response", "breach", "notification", "personal data", "security incident", "timescales"]
+    },
+    {
+      "id": "A-SEC-05",
+      "title": "Staff vetting and clearance",
+      "last_used": "2026-04-18",
+      "owner": "HR",
+      "text": "All staff with access to customer data are vetted to Baseline Personnel Security Standard as a minimum, covering identity, right to work, employment history and unspent criminal record checks. Higher clearance levels are held where contracts require them, and clearance status is reviewed annually.",
+      "tags": ["bpss", "vetting", "clearance", "staff", "screening", "dbs"]
+    },
+    {
+      "id": "A-SVC-01",
+      "title": "UK service desk model",
+      "last_used": "2026-08-19",
+      "owner": "Service Delivery",
+      "text": "Our service desk is wholly UK-based and operates from two geographically resilient sites. Core hours are 08:00 to 18:00 Monday to Friday with extended and out-of-hours cover available as a contract option. The desk is ITIL-aligned and staffed by directly employed analysts, with no offshoring of customer contact.",
+      "tags": ["service desk", "uk based", "support hours", "itil", "staffing", "helpdesk"]
+    },
+    {
+      "id": "A-SVC-02",
+      "title": "Service levels and service credits",
+      "last_used": "2026-08-19",
+      "owner": "Service Delivery",
+      "text": "We propose a priority-based service level framework with response targets of 30 minutes for P1, 2 hours for P2 and 8 hours for P3, and corresponding resolution targets of 4, 8 and 24 working hours. Performance is reported monthly and we accept a service credit regime linked to sustained failure against target.",
+      "tags": ["sla", "service levels", "p1", "p2", "p3", "response", "resolution", "service credits", "targets"]
+    },
+    {
+      "id": "A-SVC-03",
+      "title": "Account management and escalation",
+      "last_used": "2026-07-02",
+      "owner": "Sales",
+      "text": "Each contract is supported by a named Account Director with overall commercial ownership, a Service Delivery Manager responsible for day-to-day performance, and a technical lead for solution matters. A three-stage escalation route runs from Service Delivery Manager to Head of Service to Operations Director, with defined response times at each stage.",
+      "tags": ["account management", "escalation", "service delivery manager", "governance", "roles", "named contact"]
+    },
+    {
+      "id": "A-SVC-04",
+      "title": "Management information and reporting",
+      "last_used": "2026-06-11",
+      "owner": "Service Delivery",
+      "text": "Standard reporting comprises a monthly service performance pack covering SLA attainment, incident and request volumes, trend analysis and asset position, supplemented by a quarterly service review. Customers also have access to a self-service portal providing real-time order, asset and ticket data.",
+      "tags": ["reporting", "management information", "mi", "sla attainment", "portal", "service review", "dashboard"]
+    },
+    {
+      "id": "A-TEC-01",
+      "title": "Device catalogue and portfolio management",
+      "last_used": "2026-09-01",
+      "owner": "Product",
+      "text": "We maintain a managed product catalogue across the major OEM partners covering laptops, desktops, tablets, peripherals and accessories. Catalogue content is reviewed quarterly with the customer to track product refresh cycles, retire end-of-life SKUs and introduce replacements at equivalent or improved specification and price.",
+      "tags": ["catalogue", "devices", "laptops", "desktops", "tablets", "accessories", "product range", "oem"]
+    },
+    {
+      "id": "A-TEC-02",
+      "title": "Zero-touch provisioning and configuration",
+      "last_used": "2026-09-01",
+      "owner": "Technical Services",
+      "text": "Devices are enrolled for zero-touch deployment through Microsoft Intune and Windows Autopilot, and through Apple Business Manager for iPadOS and macOS estates. Our configuration centre applies asset tagging, bespoke imaging and customer-specific labelling before despatch, so devices arrive ready for immediate issue to the end user.",
+      "tags": ["provisioning", "zero touch", "intune", "autopilot", "apple business manager", "imaging", "asset tagging", "configuration", "enrolment"]
+    },
+    {
+      "id": "A-TEC-03",
+      "title": "Windows 11 readiness and migration",
+      "last_used": "2026-08-27",
+      "owner": "Technical Services",
+      "text": "Our Windows 11 readiness service begins with an automated estate assessment identifying hardware eligibility, application compatibility risk and remediation options device by device. We then produce a phased migration plan balancing refresh, in-place upgrade and retirement, sequenced to minimise disruption to the customer's operational calendar.",
+      "tags": ["windows 11", "windows 10", "migration", "readiness", "assessment", "upgrade", "estate", "compatibility"]
+    },
+    {
+      "id": "A-TEC-04",
+      "title": "Warranty management and repair",
+      "last_used": "2026-05-09",
+      "owner": "Service Operations",
+      "text": "We hold authorised service provider status with the major OEMs, allowing in-warranty repair to be carried out directly rather than routed back to the manufacturer. Average turnaround on comparable public sector contracts is five working days from collection to return, evidenced in our performance reporting.",
+      "tags": ["warranty", "repair", "turnaround", "oem", "authorised service provider", "in-warranty"]
+    },
+    {
+      "id": "A-SUS-01",
+      "title": "Circular economy and device reuse",
+      "last_used": "2026-08-30",
+      "owner": "Sustainability",
+      "text": "Our circular economy service recovers returned devices, assesses them for residual value and refurbishes those capable of further service life, with residual value returned to the customer as contract credit. On comparable contracts the majority of returned devices are refurbished for reuse rather than recycled, and all non-reusable material is processed through licensed WEEE channels.",
+      "tags": ["circular economy", "reuse", "refurbish", "recycle", "weee", "device returns", "residual value", "sustainability"]
+    },
+    {
+      "id": "A-SUS-02",
+      "title": "Carbon reduction and net zero",
+      "last_used": "2026-08-30",
+      "owner": "Sustainability",
+      "text": "We publish a Carbon Reduction Plan in line with PPN 06/21, reporting scope 1, 2 and defined scope 3 emissions annually against a measured baseline. Our commitments cover fleet transition, site energy and consolidated logistics, and the plan is independently reviewed and refreshed each year.",
+      "tags": ["carbon", "net zero", "carbon reduction plan", "ppn 06/21", "emissions", "scope 1", "environmental"]
+    },
+    {
+      "id": "A-COM-01",
+      "title": "Open book pricing and margin transparency",
+      "last_used": "2026-07-25",
+      "owner": "Commercial",
+      "text": "We are prepared to operate on an open book basis, disclosing cost of goods and the applied margin at line level, with the right for the customer to audit. Margin is fixed by product category for the duration of the pricing period so that the customer benefits directly from any cost price reduction we secure.",
+      "tags": ["open book", "pricing", "margin", "transparency", "cost", "audit", "commercial"]
+    },
+    {
+      "id": "A-COM-02",
+      "title": "Added value and cost reduction commitments",
+      "last_used": "2026-07-25",
+      "owner": "Commercial",
+      "text": "We commit to a programme of quantified cost reduction initiatives reviewed at each quarterly business review, typically covering catalogue standardisation, order consolidation, lifecycle extension and recovery of residual asset value. Savings are tracked against an agreed baseline and reported to the customer.",
+      "tags": ["added value", "cost reduction", "savings", "quantified", "benchmarking", "value"]
+    },
+    {
+      "id": "A-MOB-01",
+      "title": "Contract mobilisation and transition",
+      "last_used": "2026-06-30",
+      "owner": "Project Management",
+      "text": "Mobilisation is run as a formal project under PRINCE2 governance with a named project manager, an agreed mobilisation plan and weekly joint progress reporting. Workstreams cover systems and catalogue setup, service desk onboarding, asset data migration from the incumbent and a defined go-live readiness gate before service commencement.",
+      "tags": ["mobilisation", "transition", "incumbent", "project", "onboarding", "go live", "implementation", "prince2"]
+    }
+  ]
+}
